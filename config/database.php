@@ -40,8 +40,13 @@ return [
         ],
 
         'mysql' => [
+            'read' => [
+                'host' => env('DB_HOST', '127.0.0.1'),
+                ],
+            'write' => [
+                'host' => env('DB_HOST', '127.0.0.1'),
+                ],
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'TestDb'),
             'username' => env('DB_USERNAME', 'root'),
