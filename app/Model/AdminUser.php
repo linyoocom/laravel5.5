@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,7 @@ class AdminUser extends Model
 
     public $timestamps = true;
     protected $table = 'admin_user';
+    protected $primaryKey = 'user_id';
 
     //可批量赋值的字段
     protected $fillable = ['username','email','password','mobile'];
