@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\TestDemoInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,10 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         return redirect(route('adminLogin'));
+    }
+
+    public function testMsg(TestDemoInterface $service){
+        $service->echoText();
     }
 
     /**
