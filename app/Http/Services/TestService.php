@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Services;
 
-use App\TestDemoInterface;
+use App\Interfaces\TestDemoInterface;
 
 class TestService implements TestDemoInterface {
     public function echoText(){

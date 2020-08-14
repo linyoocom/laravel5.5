@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\TestDemoInterface;
+use App\Interfaces\TestDemoInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +66,10 @@ class LoginController extends Controller
     }
 
     public function testMsg(TestDemoInterface $service){
+        $service->echoText();
+    }
+
+    public function DemoMsg(TestDemoInterface $service){
         $service->echoText();
     }
 
