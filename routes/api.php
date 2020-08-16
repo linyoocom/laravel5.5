@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+//  auth:api  给中间件auth传入api参数,即auth中间件使用api组的守卫(guard)   守卫配置在config/auth.php
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
