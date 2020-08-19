@@ -79,7 +79,7 @@ class Fire {
      * (装饰器模式允许我们根据运行时不同的情景动态地为某个对象调用前后添加不同的行为动作。)
      */
     public function fireDecorator(){
-
+        return false;
     }
 
     /**
@@ -95,11 +95,5 @@ class Fire {
         print_r($secondDirector->getProduct()->getName());
         // The product of second builder
     }
-
-
-
-
-
-
 
 }
