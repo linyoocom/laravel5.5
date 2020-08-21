@@ -14,7 +14,7 @@ class CreateCustomsTable extends Migration
     public function up()
     {
         Schema::create('customs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('custom_id');
             $table->timestamps();
         });
     }
