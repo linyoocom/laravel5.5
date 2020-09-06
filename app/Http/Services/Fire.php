@@ -12,6 +12,7 @@ use App\Http\Services\Prototype\Factory as PrototypeFactory;
 use App\Http\Services\Builder\Factory as BuilderFactory;
 use App\Http\Services\Builder\FirstBuilder;
 use App\Http\Services\Builder\SecondBuilder;
+use App\Http\Services\State\Client;
 
 class Fire {
     public function __construct()
@@ -96,4 +97,11 @@ class Fire {
         // The product of second builder
     }
 
+    /**
+     * 状态模式
+     * （允许一个对象在其内部状态改变时改变它的行为）
+     */
+    public function fireState(){
+        (new Client())->main();
+    }
 }
