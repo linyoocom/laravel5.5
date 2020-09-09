@@ -12,6 +12,8 @@ use App\Http\Services\Prototype\Factory as PrototypeFactory;
 use App\Http\Services\Builder\Factory as BuilderFactory;
 use App\Http\Services\Builder\FirstBuilder;
 use App\Http\Services\Builder\SecondBuilder;
+use App\Http\Services\State\Client;
+use App\Http\Services\Strategy\ContextStrategy;
 
 class Fire {
     public function __construct()
@@ -96,4 +98,34 @@ class Fire {
         // The product of second builder
     }
 
+    /**
+     * 状态模式
+     * （允许一个对象在其内部状态改变时改变它的行为）
+     */
+    public function fireState(){
+        (new Client())->main();
+    }
+
+    /**
+     * 策略模式
+     * (定义一系列算法,把它们一个个封装起来,并且使它们之间可以互相替换,从而使算法独立于使用它的用户而变化)
+     */
+    public function fireStrategy(){
+        $strategy=new ContextStrategy();
+
+        echo "<span style='color: #ff0000;'>X产品</span><hr/>";
+        $strategy->getItem('XItem');
+        $strategy->inertiaRotate();
+        $strategy->unInertisRotate();
+
+        echo "<span style='color: #ff0000;'>Y产品</span><hr/>";
+        $strategy->getItem('YItem');
+        $strategy->inertiaRotate();
+        $strategy->unInertisRotate();
+
+        echo "<span style='color: #ff0000;'>XY产品</span><hr/>";
+        $strategy->getItem('XYItem');
+        $strategy->inertiaRotate();
+        $strategy->unInertisRotate();
+    }
 }
