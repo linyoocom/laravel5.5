@@ -6,6 +6,11 @@
  */
 namespace App\Http\Services\FactoryModel;
 
+/**
+ * 工厂模式
+ * Class Factory
+ * @package App\Http\Services\FactoryModel
+ */
 class Factory {
     private $objectList = [];
 
