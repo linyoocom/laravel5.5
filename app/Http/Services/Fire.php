@@ -3,6 +3,7 @@ namespace App\Http\Services;
 
 use App\Http\Services\Adapter\NewClass;
 use App\Http\Services\Adapter\OldClass;
+use App\Http\Services\Facade\UserCenter;
 use App\Http\Services\Viewer\Observer;
 use App\Http\Services\Viewer\Observered;
 use App\Http\Services\ObjectPool\Factory as ObjectPoolFactory;
@@ -109,9 +110,9 @@ class Fire {
     /**
      * 策略模式
      * (定义一系列算法,把它们一个个封装起来,并且使它们之间可以互相替换,从而使算法独立于使用它的用户而变化)
+     * @param ContextStrategy $strategy
      */
-    public function fireStrategy(){
-        $strategy=new ContextStrategy();
+    public function fireStrategy(ContextStrategy $strategy){
 
         echo "<span style='color: #ff0000;'>X产品</span><hr/>";
         $strategy->getItem('XItem');
@@ -127,5 +128,12 @@ class Fire {
         $strategy->getItem('XYItem');
         $strategy->inertiaRotate();
         $strategy->unInertisRotate();
+    }
+
+    /**
+     * 外观模式
+     */
+    public function fireFacade(){
+        echo UserCenter::login();
     }
 }

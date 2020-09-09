@@ -23,4 +23,6 @@ Route::group(['namespace'=>'Admin'],function(){
 
     Route::get('test', 'LoginController@testMsg');
 
+    Route::get('fire', 'LoginController@fireService');
+
 });
