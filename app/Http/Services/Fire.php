@@ -21,10 +21,23 @@ use App\Http\Services\Bridge\Mix;
 use App\Http\Services\Bridge\Note;
 use App\Http\Services\Bridge\Osteophony;
 use App\Http\Services\Bridge\Cylinder;
+use App\Http\Services\Iterator\Users;
 
 class Fire {
     public function __construct()
     {
+    }
+
+    /**
+     * 迭代器模式
+     * (在不需要了解内部实现的前提下，遍历一个聚合对象的内部元素)
+     * @param Users $users
+     */
+    public function fireIterator(Users $users){
+        foreach ($users as $user){
+            echo $user->id;
+            $user->name = 'third name';
+        }
     }
 
     /**
