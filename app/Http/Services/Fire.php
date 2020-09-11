@@ -15,6 +15,10 @@ use App\Http\Services\Builder\FirstBuilder;
 use App\Http\Services\Builder\SecondBuilder;
 use App\Http\Services\State\Client;
 use App\Http\Services\Strategy\ContextStrategy;
+use App\Http\Services\Bridge\Mix;
+use App\Http\Services\Bridge\Note;
+use App\Http\Services\Bridge\Osteophony;
+use App\Http\Services\Bridge\Cylinder;
 
 class Fire {
     public function __construct()
@@ -28,7 +32,7 @@ class Fire {
      */
     public function fireViewer(){
         $obed = new Observered();
-        $ob = new Observer($obed);
+        $ob = new Observer($obed);  //注册
         $obed->setStatus('change01');
         $obed->doIt();
         return false;
@@ -135,5 +139,17 @@ class Fire {
      */
     public function fireFacade(){
         echo UserCenter::login();
+    }
+
+    /**
+     * 桥接模式
+     */
+    public function fireBridge(){
+        $mix = new Mix(new Osteophony);
+        $mix->output();
+        $note = new Note(new Cylinder);
+        $note->output();
+        //这样写的好处是把抽象化角色手机和实现化角色手机的具体功能音频输出 分离了出来,
+        //如果现在最新的小米note系列也要用上骨传导输出，那么我们只需实例化时传入的声筒音频类改为骨传导音频类
     }
 }
