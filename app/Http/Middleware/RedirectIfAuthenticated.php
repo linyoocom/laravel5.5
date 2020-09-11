@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
                 case 'web':
                     return redirect('/home');
                 case 'admin':
-                    return redirect('/admin/index');
+                    return redirect('/admin/login');
                 default:
                     return redirect('/');
             }
