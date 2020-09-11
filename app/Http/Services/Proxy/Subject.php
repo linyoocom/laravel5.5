@@ -8,6 +8,6 @@
 namespace App\Http\Services\Proxy;
 
 interface Subject{
-    function say();
-    function run();
+    public function say();
+    public function run();
 }

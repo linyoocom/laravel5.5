@@ -9,17 +9,17 @@ namespace App\Http\Services\Proxy;
 
 class Proxy implements Subject{
     private $realSubject = null;
-    function __construct(RealSubject $realSubject = null){
+    public function __construct(RealSubject $realSubject = null){
         if(empty($realSubject)){
             $this->realSubject = new RealSubject();
         }else{
             $this->realSubject = $realSubject;
         }
     }
-    function say(){
+    public function say(){
         $this->realSubject->say();
     }
-    function run(){
+    public function run(){
         $this->realSubject->run();
     }
 }

@@ -24,6 +24,7 @@ use App\Http\Services\Bridge\Cylinder;
 use App\Http\Services\Iterator\Users;
 use App\Http\Services\Proxy\RealSubject;
 use App\Http\Services\Proxy\Proxy;
+use App\Http\Services\Duty\Board;
 
 class Fire {
     public function __construct()
@@ -173,10 +174,20 @@ class Fire {
         //如果现在最新的小米note系列也要用上骨传导输出，那么我们只需实例化时传入的声筒音频类改为骨传导音频类
     }
 
+    /**
+     * 代理模式
+     */
     public function fireProxy(){
         $subject = new RealSubject("张三");
         $proxy = new Proxy($subject);
         $proxy->say();
         $proxy->run();
+    }
+
+    public function fireDuty(){
+        $lv = isset($_GET['lv'])?$_GET['lv']:1;
+
+        $cls = new Board();
+        $cls->process($lv);
     }
 }

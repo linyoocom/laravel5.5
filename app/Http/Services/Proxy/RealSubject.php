@@ -10,14 +10,14 @@ namespace App\Http\Services\Proxy;
 class RealSubject implements Subject{
     private $name;
 
-    function __construct($name){
+    public function __construct($name){
         $this->name = $name;
     }
 
-    function say(){
+    public function say(){
         echo $this->name."在吃饭<br>";
     }
-    function run(){
+    public function run(){
         echo $this->name."在跑步<br>";
     }
 }
