@@ -3,6 +3,8 @@ namespace App\Http\Services;
 
 use App\Http\Services\Adapter\NewClass;
 use App\Http\Services\Adapter\OldClass;
+use App\Http\Services\Decorator\Template1;
+use App\Http\Services\Decorator\TemplateDecorator;
 use App\Http\Services\Facade\UserCenter;
 use App\Http\Services\Viewer\Observer;
 use App\Http\Services\Viewer\Observered;
@@ -83,9 +85,11 @@ class Fire {
 
     /**
      * 装饰器
+     * (允许向一个现有的对象添加新的功能，同时又不改变其结构)
      * (装饰器模式允许我们根据运行时不同的情景动态地为某个对象调用前后添加不同的行为动作。)
      */
     public function fireDecorator(){
+        $newTmp1 = new TemplateDecorator(new Template1());
         return false;
     }
 
@@ -143,11 +147,12 @@ class Fire {
 
     /**
      * 桥接模式
+     * (Bridge模式将继承关系转换为组合关系，从而降低了系统间的耦合，根据需要实现多种组合，减少了代码编写量)
      */
     public function fireBridge(){
-        $mix = new Mix(new Osteophony);
+        $mix = new Mix(new Osteophony());
         $mix->output();
-        $note = new Note(new Cylinder);
+        $note = new Note(new Cylinder());
         $note->output();
         //这样写的好处是把抽象化角色手机和实现化角色手机的具体功能音频输出 分离了出来,
         //如果现在最新的小米note系列也要用上骨传导输出，那么我们只需实例化时传入的声筒音频类改为骨传导音频类
