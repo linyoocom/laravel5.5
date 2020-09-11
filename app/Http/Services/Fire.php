@@ -22,6 +22,8 @@ use App\Http\Services\Bridge\Note;
 use App\Http\Services\Bridge\Osteophony;
 use App\Http\Services\Bridge\Cylinder;
 use App\Http\Services\Iterator\Users;
+use App\Http\Services\Proxy\RealSubject;
+use App\Http\Services\Proxy\Proxy;
 
 class Fire {
     public function __construct()
@@ -169,5 +171,12 @@ class Fire {
         $note->output();
         //这样写的好处是把抽象化角色手机和实现化角色手机的具体功能音频输出 分离了出来,
         //如果现在最新的小米note系列也要用上骨传导输出，那么我们只需实例化时传入的声筒音频类改为骨传导音频类
+    }
+
+    public function fireProxy(){
+        $subject = new RealSubject("张三");
+        $proxy = new Proxy($subject);
+        $proxy->say();
+        $proxy->run();
     }
 }
