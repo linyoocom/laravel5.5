@@ -6,6 +6,9 @@ use App\Http\Services\Adapter\OldClass;
 use App\Http\Services\Decorator\Template1;
 use App\Http\Services\Decorator\TemplateDecorator;
 use App\Http\Services\Facade\UserCenter;
+use App\Http\Services\Intermediary\China;
+use App\Http\Services\Intermediary\UnitedCommit;
+use App\Http\Services\Intermediary\USA;
 use App\Http\Services\Viewer\Observer;
 use App\Http\Services\Viewer\Observered;
 use App\Http\Services\ObjectPool\Factory as ObjectPoolFactory;
@@ -236,5 +239,20 @@ class Fire {
     public function fireCommand(Invoker $invoker,Receiver $receiver){
         $invoker->setCommand(new HelloCommand($receiver));
         $invoker->run();
+    }
+
+    /**
+     * 中介者模式
+     * (适用场景:如果一组对象之间的通信方式比较复杂，导致相互依赖，结构混乱，可以采用中介者模式
+     * 如果一个对象引用很多对象，并且跟这些对象交互，导致难以复用该对象)
+     */
+    public function fireIntermediary(){
+        $UNSC = new UnitedCommit();
+        $c1 = new USA($UNSC);
+        $c2 = new China($UNSC);
+        $UNSC->countryChina = $c2;
+        $UNSC->countryUsa =$c1;
+        $c1->Declared("姚明的篮球打的就是好");
+        $c2->Declared("谢谢。");
     }
 }
