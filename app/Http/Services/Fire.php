@@ -25,6 +25,12 @@ use App\Http\Services\Iterator\Users;
 use App\Http\Services\Proxy\RealSubject;
 use App\Http\Services\Proxy\Proxy;
 use App\Http\Services\Duty\Board;
+use App\Http\Services\Visitor\Amativeness;
+use App\Http\Services\Visitor\Failure;
+use App\Http\Services\Visitor\ObjectStruct;
+use App\Http\Services\Visitor\Success;
+use App\Http\Services\Visitor\VMan;
+use App\Http\Services\Visitor\VWoman;
 
 class Fire {
     public function __construct()
@@ -125,7 +131,8 @@ class Fire {
 
     /**
      * 状态模式
-     * （允许一个对象在其内部状态改变时改变它的行为）
+     *（允许一个对象在其内部状态改变时改变它的行为）
+     * (传统思维一般用if else switch去判断,没什么拓展性，维护性，复用性,可以用状态模式把这些状态封装起来,杜绝"牵一发而动全身"的情况)
      */
     public function fireState(){
         (new Client())->main();
@@ -176,6 +183,7 @@ class Fire {
 
     /**
      * 代理模式
+     * (多用于远程代理的情况)
      */
     public function fireProxy(){
         $subject = new RealSubject("张三");
@@ -184,10 +192,34 @@ class Fire {
         $proxy->run();
     }
 
+    /**
+     * 职任链模式
+     */
     public function fireDuty(){
         $lv = isset($_GET['lv'])?$_GET['lv']:1;
 
         $cls = new Board();
         $cls->process($lv);
+    }
+
+    /**
+     * 访问者模式
+     */
+    public function fireVisitor(){
+        $os = new ObjectStruct();
+        $os->Add(new VMan());
+        $os->Add(new VWoman());
+
+        //成功时反应
+        $ss = new Success();
+        $os->Display($ss);
+
+        //失败时反应
+        $fs = new Failure();
+        $os->Display($fs);
+
+        //恋爱时反应
+        $ats=new Amativeness();
+        $os->Display($ats);
     }
 }
