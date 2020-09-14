@@ -31,6 +31,9 @@ use App\Http\Services\Visitor\ObjectStruct;
 use App\Http\Services\Visitor\Success;
 use App\Http\Services\Visitor\VMan;
 use App\Http\Services\Visitor\VWoman;
+use App\Http\Services\Command\Invoker;
+use App\Http\Services\Command\Receiver;
+use App\Http\Services\Command\HelloCommand;
 
 class Fire {
     public function __construct()
@@ -221,5 +224,17 @@ class Fire {
         //恋爱时反应
         $ats=new Amativeness();
         $os->Display($ats);
+    }
+
+    /**
+     * 命令模式
+     * (命令模式就是将一组对象的相似行为，进行了抽象，将调用者与被调用者之间进行解耦，提高了应用的灵活性。
+     * 命令模式将调用的目标对象的一些异构性给封装起来，通过统一的方式来为调用者提供服务。)
+     * @param Invoker $invoker
+     * @param Receiver $receiver
+     */
+    public function fireCommand(Invoker $invoker,Receiver $receiver){
+        $invoker->setCommand(new HelloCommand($receiver));
+        $invoker->run();
     }
 }
