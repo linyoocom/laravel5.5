@@ -37,6 +37,7 @@ use App\Http\Services\Visitor\VWoman;
 use App\Http\Services\Command\Invoker;
 use App\Http\Services\Command\Receiver;
 use App\Http\Services\Command\HelloCommand;
+use App\Http\Services\Template\Client as TClient;
 
 class Fire {
     public function __construct()
@@ -254,5 +255,14 @@ class Fire {
         $UNSC->countryUsa =$c1;
         $c1->Declared("姚明的篮球打的就是好");
         $c2->Declared("谢谢。");
+    }
+
+    /**
+     * 模板方法模式
+     * (定义一个操作中的算法骨架,而将一些步骤延迟到子类中,使得子类可以不改变一个算法的结构可以定义该算法的某些特定步骤)
+     */
+    public function fireTemplate(){
+        $worker = new TClient(100);
+        $worker = new TClient(200);
     }
 }
