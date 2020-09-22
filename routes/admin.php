@@ -25,4 +25,6 @@ Route::group(['namespace'=>'Admin'],function(){
 
     Route::get('fire', 'LoginController@fireService');
 
+    Route::get('algo', 'LoginController@execAlgo');
+
 });

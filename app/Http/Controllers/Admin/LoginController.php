@@ -79,6 +79,11 @@ class LoginController extends Controller
         (new Fire())->{$method}();
     }
 
+    public function execAlgo(Request $request){
+        $class = '\App\Http\Algorithm\\'.$request->get('name');
+        (new $class())->main();
+    }
+
     /**
      * 重新定义登录帐号名称字段
      * @return string
