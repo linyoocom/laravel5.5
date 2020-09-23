@@ -7,6 +7,7 @@ use App\Interfaces\TestDemoInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Services\Fire;
 
 class LoginController extends Controller
 {
@@ -37,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:admin')->except(['loginPage','login','logout']);
     }
 
     public function loginPage()
@@ -71,6 +72,16 @@ class LoginController extends Controller
 
     public function DemoMsg(TestDemoInterface $service){
         $service->echoText();
+    }
+
+    public function fireService(Request $request){
+        $method = $request->get('name');
+        (new Fire())->{$method}();
+    }
+
+    public function execAlgo(Request $request){
+        $class = '\App\Http\Algorithm\\'.$request->get('name');
+        (new $class())->main();
     }
 
     /**
