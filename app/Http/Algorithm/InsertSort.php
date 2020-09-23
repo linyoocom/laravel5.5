@@ -25,7 +25,7 @@ class InsertSort {
      * @param $array
      * @return mixed
      */
-    public function sort($array){
+    public function sort(&$array){
         //将a[]按升序排列
         $n = count($array);
         for ($i = 1;$i < $n; $i++)

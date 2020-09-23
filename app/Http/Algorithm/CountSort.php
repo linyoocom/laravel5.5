@@ -8,7 +8,7 @@
 namespace App\Http\Algorithm;
 
 /**
- * 计算排序算法
+ * 计数排序算法(稳定 O(n+k))
  * Class CountSort
  * @package App\Http\Algorithm
  */
