@@ -24,6 +24,7 @@ class RadixSort {
      * 它是透过键值的部份资讯，将要排序的元素分配至某些“桶”中，藉以达到排序的作用，基数排序法是属于稳定性的排序，其时间复杂度为O (nlog(r)m)，
      * 其中r为所采取的基数，而m为堆数，在某些时候，基数排序法的效率高于其它的稳定性排序法。
      * @param $array
+     * @param $d
      * @return mixed
      */
     public function sort($array,$d){ //d表示最大的数有多少位
