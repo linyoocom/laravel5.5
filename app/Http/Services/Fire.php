@@ -3,8 +3,9 @@ namespace App\Http\Services;
 
 use App\Http\Services\Adapter\NewClass;
 use App\Http\Services\Adapter\OldClass;
-use App\Http\Services\Decorator\Template1;
-use App\Http\Services\Decorator\TemplateDecorator;
+use App\Http\Services\Decorator\Circle;
+use App\Http\Services\Decorator\Rectangle;
+use App\Http\Services\Decorator\RedBorder;
 use App\Http\Services\Facade\UserCenter;
 use App\Http\Services\Intermediary\China;
 use App\Http\Services\Intermediary\UnitedCommit;
@@ -118,7 +119,10 @@ class Fire {
      * (装饰器模式允许我们根据运行时不同的情景动态地为某个对象调用前后添加不同的行为动作。)
      */
     public function fireDecorator(){
-        $newTmp1 = new TemplateDecorator(new Template1());
+        $newCircle = new RedBorder(new Circle());
+        $newRectangle = new RedBorder(new Rectangle());
+        $newCircle->draw();    //redCircleBorder
+        $newRectangle->draw(); //redRectangleBorder
         return false;
     }
 
@@ -259,7 +263,8 @@ class Fire {
 
     /**
      * 模板方法模式
-     * (定义一个操作中的算法骨架,而将一些步骤延迟到子类中,使得子类可以不改变一个算法的结构可以定义该算法的某些特定步骤)
+     * (定义一个操作中的算法骨架,而将一些步骤延迟到子类中,使得子类可以不改变一个算法的结构可以定义该算法的某些特定步骤,
+     * 主要解决：一些方法通用，却在每一个子类都重新写了这一方法。)
      */
     public function fireTemplate(){
         $worker = new TClient(100);
