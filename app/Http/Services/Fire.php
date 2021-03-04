@@ -121,6 +121,8 @@ class Fire {
     public function fireDecorator(){
         $newCircle = new RedBorder(new Circle());
         $newRectangle = new RedBorder(new Rectangle());
+        $newCircle->draw();    //redCircleBorder
+        $newRectangle->draw(); //redRectangleBorder
         return false;
     }
 
