@@ -3,8 +3,9 @@ namespace App\Http\Services;
 
 use App\Http\Services\Adapter\NewClass;
 use App\Http\Services\Adapter\OldClass;
-use App\Http\Services\Decorator\Template1;
-use App\Http\Services\Decorator\TemplateDecorator;
+use App\Http\Services\Decorator\Circle;
+use App\Http\Services\Decorator\Rectangle;
+use App\Http\Services\Decorator\RedBorder;
 use App\Http\Services\Facade\UserCenter;
 use App\Http\Services\Intermediary\China;
 use App\Http\Services\Intermediary\UnitedCommit;
@@ -118,7 +119,8 @@ class Fire {
      * (装饰器模式允许我们根据运行时不同的情景动态地为某个对象调用前后添加不同的行为动作。)
      */
     public function fireDecorator(){
-        $newTmp1 = new TemplateDecorator(new Template1());
+        $newCircle = new RedBorder(new Circle());
+        $newRectangle = new RedBorder(new Rectangle());
         return false;
     }
 
