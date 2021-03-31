@@ -59,6 +59,21 @@ return [
             'engine' => null,
         ],
 
+        'mysql2' => [
+            'host' => env('DB_HOST_', '127.0.0.1'),
+            'driver' => 'mysql',
+            'port' => env('DB_PORT_', '3306'),
+            'database' => env('DB_DATABASE_', 'TestDb'),
+            'username' => env('DB_USERNAME_', 'root'),
+            'password' => env('DB_PASSWORD_', 'root'),
+            'unix_socket' => env('DB_SOCKET_', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

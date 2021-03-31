@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\SyncData\SyncDataService;
 use App\Interfaces\TestDemoInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -82,6 +83,10 @@ class LoginController extends Controller
     public function execAlgo(Request $request){
         $class = '\App\Http\Algorithm\\'.$request->get('name');
         (new $class())->main();
+    }
+
+    public function syncData(Request $request){
+        (new SyncDataService())->doSync($request->get('table',''));
     }
 
     /**
