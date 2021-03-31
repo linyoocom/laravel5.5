@@ -27,4 +27,5 @@ Route::group(['namespace'=>'Admin'],function(){
 
     Route::get('algo', 'LoginController@execAlgo');
 
+    Route::get('syncData', 'LoginController@syncData');
 });
