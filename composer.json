@@ -22,6 +22,10 @@
             "database/seeds",
             "database/factories"
         ],
+        "files": ["storage/TestPackage/TestDo.php"],
+        "psr-0": {
+            "TestPackage": "storage/"
+        },
         "psr-4": {
             "App\\": "app/"
         }

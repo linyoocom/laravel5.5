@@ -127,7 +127,7 @@ class Fire {
     }
 
     /**
-     * 构造者
+     * 构造者(也叫生成器)模式
      * (构造者模式主要在于创建一些复杂的对象)
      */
     public function fireBuilder(){
