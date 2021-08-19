@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\SyncData\SyncDataService;
 use App\Interfaces\TestDemoInterface;
+use Customer\Hello\Hello;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +69,7 @@ class LoginController extends Controller
     }
 
     public function testMsg(TestDemoInterface $service){
+        Hello::say();
         $service->echoText();
     }
 
